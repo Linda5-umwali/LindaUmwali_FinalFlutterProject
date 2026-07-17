@@ -105,6 +105,9 @@ The app follows a layered architecture: UI screens never call Firestore directly
 
 - <img width="425" height="283" alt="image" src="https://github.com/user-attachments/assets/671663be-4e04-4675-900a-49c0e705dc2b" />
 
+## State Management Approach
+ALU Connect uses the Provider package for state management in selected parts of the application where shared or reactive state was required. Provider was mainly used to manage application-level states such as user-related data and UI updates that needed to be accessed across multiple widgets. However, not every screen uses Provider because many parts of the application rely on local widget state (`setState`) or direct Firebase interactions where introducing global state management would add unnecessary complexity. This approach follows a practical state management strategy by using Provider only where it improves code organization, maintainability, and data flow, while keeping simpler screens lightweight.
+
 ## How to run
 Prerequisites:
 - Flutter SDK (3.x or later)
