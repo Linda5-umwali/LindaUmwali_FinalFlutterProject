@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1025873769930",
+    "project_id": "alu-connect-13ded",
+    "storage_bucket": "alu-connect-13ded.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025873769930:android:48fc33e2271c87fd4b8b33",
+        "android_client_info": {
+          "package_name": "com.example.alu_connect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0A3xIRsR6HQ7hDIoVD6fcYKIItUokLEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
