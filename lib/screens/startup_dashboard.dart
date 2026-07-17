@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../models/startup.dart';
 import '../models/opportunity.dart';
 import '../models/application.dart';
+import 'package:alu_connect/screens/post_opportunity_screen.dart';
 
 class StartupDashboardScreen extends StatefulWidget {
   const StartupDashboardScreen({super.key});
@@ -153,7 +154,7 @@ class _StartupDashboardScreenState extends State<StartupDashboardScreen> {
                           eventsCount,
                         ),
                         const SizedBox(height: 28),
-                        _buildQuickActions(context),
+                        _buildQuickActions(context, startup),
                         const SizedBox(height: 28),
                         _buildRecentApplications(
                           context,
@@ -197,7 +198,7 @@ class _StartupDashboardScreenState extends State<StartupDashboardScreen> {
     );
   }
 
-  Widget _buildQuickActions(BuildContext context) {
+  Widget _buildQuickActions(BuildContext context, Startup startup) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -209,7 +210,12 @@ class _StartupDashboardScreenState extends State<StartupDashboardScreen> {
         _ActionButton(
           icon: Icons.add,
           label: 'Post Opportunity',
-          onTap: () => _comingSoon(context, 'Post Opportunity'),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => PostOpportunityScreen(startup: startup),
+            ),
+          ),
         ),
         const SizedBox(height: 10),
         _ActionButton(
