@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'main_shell.dart';
+import 'package:provider/provider.dart';
+import 'package:alu_connect/providers/auth_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isLogin = true;
   bool _obscurePassword = true;
   bool _isSubmitting = false;
-  String _selectedRole = 'student'; // only used during sign-up
+  String _selectedRole = 'student';
 
   @override
   void dispose() {
@@ -42,15 +44,18 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       String role;
       if (_isLogin) {
-        final credential = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(
-              email: _emailController.text.trim(),
-              password: _passwordController.text,
-            );
+        final auth = Provider.of<AppAuthProvider>(context, listen: false);
+
+        final credential = await auth.signIn(
+          email: _emailController.text.trim(),
+          password: _passwordController.text,
+        );
+
         final doc = await FirebaseFirestore.instance
             .collection('users')
             .doc(credential.user!.uid)
             .get();
+
         role = doc.data()?['role'] ?? 'student';
       } else {
         final credential = await FirebaseAuth.instance

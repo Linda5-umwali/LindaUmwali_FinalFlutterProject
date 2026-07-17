@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:alu_connect/screens/splash.dart';
 import 'package:alu_connect/theme/app_theme_controller.dart';
+import 'package:provider/provider.dart';
+import 'providers/auth_provider.dart';
 
 const Color aluDarkBlue = Color(0xFF001A5B);
 const Color aluRed = Color(0xFFB00020);
@@ -13,7 +15,12 @@ void main() async {
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(const AluConnectApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => AppAuthProvider(),
+      child: const AluConnectApp(),
+    ),
+  );
 }
 
 class AluConnectApp extends StatefulWidget {

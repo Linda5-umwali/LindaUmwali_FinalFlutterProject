@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:alu_connect/screens/settings.dart';
 import 'package:alu_connect/screens/help_page.dart';
+import 'package:provider/provider.dart';
+import 'package:alu_connect/providers/auth_provider.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -61,7 +63,8 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> _logout(BuildContext context) async {
-    await FirebaseAuth.instance.signOut();
+    await Provider.of<AppAuthProvider>(context, listen: false).signOut();
+
     if (context.mounted) {
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
     }
