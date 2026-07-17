@@ -103,7 +103,8 @@ Authentication and four Firestore collections(see schema below)
 ## System architecture
 The app follows a layered architecture: UI screens never call Firestore directly. Instead, they read state exposed through Provider (ChangeNotifier), which in turn goes through a Firestore service layer that isolates all reads and writes from the rest of the app.
 
-- screenshot here...
+- <img width="425" height="283" alt="image" src="https://github.com/user-attachments/assets/671663be-4e04-4675-900a-49c0e705dc2b" />
+
 ## How to run
 Prerequisites:
 - Flutter SDK (3.x or later)
